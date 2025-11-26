@@ -65,15 +65,15 @@ sections.another:AddSeparator({
 	text = "TrashTalk"
 })
 
-sections.another:AddBind({
-    text = "TrashTalk",
-    flag = "trashtalkf",
-    nomouse = true,
-    noindicator = true,
-    tooltip = "Send random message on chat",
-    mode = "toggle",
-    bind = Enum.KeyCode.Q,
-    risky = false,
+sections.Section1:AddBind({
+	text = "Keybind",
+	flag = "Key_1",
+	nomouse = true,
+	noindicator = true,
+	tooltip = "Tooltip1",
+	mode = "toggle",
+	bind = Enum.KeyCode.Q,
+	risky = false,
     keycallback = function(v)
         local trashTalkword = {
             "bro aiming at the moon?",
