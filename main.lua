@@ -1,13 +1,3 @@
--- Credits To The Original Devs @xz, @goof
-getgenv().Config = {
-	Invite = "3sP26VZy",
-	Version = "1.0",
-}
-
-getgenv().luaguardvars = {
-	DiscordName = "sadia4ek",
-}
-
 local RandomNameList = {
     "path to victory",
     "road to glory",
@@ -27,6 +17,8 @@ local RandomNameList = {
 
 local Ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/drillygzzly/Roblox-UI-Libs/main/Abyss%20Lib/Abyss%20Lib%20Source.lua"))()
 local Ui = Library
+
+local LoadTime = tick()
 
 local randomWord = RandomNameList[math.random(#RandomNameList)]
 local Loader = Library.CreateLoader(
