@@ -86,64 +86,58 @@ local TrollingSection = MiscTab:Section(
     "Right"
 )
 
-TrashTalkSection:Toggle({
+TrollingSection:Toggle({
     Title = "TrashTalk", 
     Flag = "trashtalk",
     Type = "Trolling",
     Callback = function(v)
-		local trashTalk = {
-		    "bro aiming at the moon?",
-		    "nice try… but no",
-		    "outplayed lol",
-		    "bro folding like paper",
-		    "you lagging or skill issue?",
-		    "I wasn’t even trying",
-		    "my pet rock plays better",
-		    "still loading?",
-		    "this is embarrassing",
-		    "why so slow?",
-		    "NPC detected",
-		    "bot behavior",
-		    "bro forgot to enable brain",
-		    "cry about it",
-		    "rent free",
-		    "you good? hello?",
-		    "bro blinked and died",
-		    "touch grass pls",
-		    "your aim is on vacation",
-		    "deleted from existence",
-		    "too easy"
-		    -- ... можешь добавить все остальные фразы
-		}
-		
-		-- Функция для отправки случайного сообщения в чат
-		local function sendRandomTrashTalk()
-		    local Players = game:GetService("Players")
-		    local ReplicatedStorage = game:GetService("ReplicatedStorage")
-		    
-		    local player = Players.LocalPlayer
-		    local chatMessage = trashTalk[math.random(1, #trashTalk)]
-		    
-		    -- Используем стандартный RemoteEvent для чата
-		    local ChatEvent = ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
-		    
-		    ChatEvent:FireServer(chatMessage, "All") -- "All" чтобы отправить всем
-		end
-		
-		-- Пример: отправка сообщения при нажатии кнопки Q
-		local UserInputService = game:GetService("UserInputService")
-		
-		UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		    if gameProcessed then return end
-		    if input.KeyCode == Enum.KeyCode.Q then
-		        sendRandomTrashTalk()
-		    end
-		end)
+        local trashTalk = {
+            "bro aiming at the moon?",
+            "nice try… but no",
+            "outplayed lol",
+            "bro folding like paper",
+            "you lagging or skill issue?",
+            "I wasn’t even trying",
+            "my pet rock plays better",
+            "still loading?",
+            "this is embarrassing",
+            "why so slow?",
+            "NPC detected",
+            "bot behavior",
+            "bro forgot to enable brain",
+            "cry about it",
+            "rent free",
+            "you good? hello?",
+            "bro blinked and died",
+            "touch grass pls",
+            "your aim is on vacation",
+            "deleted from existence",
+            "too easy"
+        }
+
+        local function sendRandomTrashTalk()
+            local Players = game:GetService("Players")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            
+            local player = Players.LocalPlayer
+            local chatMessage = trashTalk[math.random(1, #trashTalk)]
+            
+            local ChatEvent = ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+            ChatEvent:FireServer(chatMessage, "All")
+        end
+
+        local UserInputService = game:GetService("UserInputService")
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if gameProcessed then return end
+            if input.KeyCode == Enum.KeyCode.Q then
+                sendRandomTrashTalk()
+            end
+        end)
     end
-}): -- Toggle Keybind Below
-    Keybind({
+}):Keybind({
     Title = "TrashTalk Keybind",
-    Flag = "trashTalkkeybind"", 
-    Key = Enum.UserInputType.Q, 
+    Flag = "trashTalkKeybind", 
+    Key = Enum.KeyCode.Q,
     StateType = "Toggle"
 })
+
