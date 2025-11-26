@@ -58,16 +58,16 @@ local sections = {
     fakepitch = tabs.aatab:AddSection("Fake Pitch", 2),
     -- misc tab sections
     another = tabs.misctab:AddSection("Another", 1),
-    soon = tabs.misctab:AddSection("Soon...", 2),
+    trashtalkww = tabs.misctab:AddSection("TrashTalk", 2),
 }
 
-sections.another:AddSeparator({
+sections.trashtalkww:AddSeparator({
 	text = "TrashTalk"
 })
 
-sections.Section1:AddBind({
-	text = "Keybind",
-	flag = "Key_1",
+sections.trashtalkww:AddBind({
+	text = "TrashTalk",
+	flag = "trashtalkbind",
 	nomouse = true,
 	noindicator = true,
 	tooltip = "Tooltip1",
@@ -130,5 +130,23 @@ sections.Section1:AddBind({
             game:GetService("ReplicatedStorage").TextChatService.SayMessageRequest:FireServer(randomMsg, "All")
         end
     end
+})
+
+sections.trashtalkww:AddList({
+	enabled = true,
+	text = "Custom word list",
+	flag = "List_1",
+	multi = false,
+	tooltip = "Import/Export custom word list in trashtalk",
+    risky = false,
+    dragging = false,
+    focused = false,
+	value = "nothing",
+	values = {
+		"nothing",
+	},
+	callback = function(v)
+	    print(11)
+	end
 })
 print(1)
