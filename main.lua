@@ -61,6 +61,10 @@ local sections = {
     soon = tabs.misctab:AddSection("Soon...", 2),
 }
 
+sections.another:AddSeparator({
+	text = "TrashTalk"
+})
+
 sections.another:AddBind({
     text = "TrashTalk",
     flag = "trashtalkf",
